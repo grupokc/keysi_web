@@ -1,0 +1,101 @@
+{
+  "initialSuggestions": [
+    "¿Que padecimientos cubre el seguro Promordial?",
+    "¿Hasta que edad puedo contratar el seguro MetaLife?",
+    "Para que puedo recomendar el seguro TempoLife?",
+    "Que tipos de planes tiene MedicaLife?",
+    "¿Cómo dar de alta a los recién nacidos en una póliza de gastos médicos?"
+  ],
+  "dynamicSuggestions": {
+    "vida": {
+      "keywords": ["vida", "life"],
+      "suggestions": [
+        "¿Cuáles son las mejores estrategias para vender seguros de vida?",
+        "¿Qué coberturas adicionales puedo ofrecer?",
+        "¿Cómo explico los beneficios del seguro de vida?",
+        "¿Cuáles son las objeciones más comunes y cómo manejarlas?",
+        "¿Qué documentación necesito para el proceso?"
+      ]
+    },
+    "auto": {
+      "keywords": ["auto", "car", "coche"],
+      "suggestions": [
+        "¿Cuáles son las mejores opciones de cobertura para autos?",
+        "¿Cómo explico las diferencias entre coberturas?",
+        "¿Qué beneficios adicionales puedo ofrecer?",
+        "¿Cómo manejo las objeciones de precio?",
+        "¿Qué información necesito del cliente?"
+      ]
+    },
+    "salud": {
+      "keywords": ["salud", "health", "médico"],
+      "suggestions": [
+        "¿Cuáles son las mejores opciones de cobertura médica?",
+        "¿Cómo explico los beneficios de la cobertura?",
+        "¿Qué redes médicas están disponibles?",
+        "¿Cómo manejo las preguntas sobre preexistencias?",
+        "¿Qué documentación médica necesito?"
+      ]
+    },
+    "bonos": {
+      "keywords": ["bono", "comisión", "incentivo"],
+      "suggestions": [
+        "¿Cómo funciona el sistema de bonos por volumen?",
+        "¿Cuáles son los requisitos para obtener bonos?",
+        "¿Qué productos tienen mejores comisiones?",
+        "¿Cómo puedo maximizar mis ganancias?",
+        "¿Cuándo se pagan los bonos?"
+      ]
+    },
+    "reportes": {
+      "keywords": ["reporte", "report", "estadística"],
+      "suggestions": [
+        "¿Cómo puedo ver mis ventas del mes?",
+        "¿Qué reportes están disponibles?",
+        "¿Cómo interpreto los indicadores de rendimiento?",
+        "¿Puedo exportar mis datos?",
+        "¿Cómo comparo mi rendimiento con otros agentes?"
+      ]
+    },
+    "prospeccion": {
+      "keywords": ["prospección", "prospecto", "cliente"],
+      "suggestions": [
+        "¿Cuáles son las mejores técnicas de prospección?",
+        "¿Cómo puedo encontrar nuevos clientes?",
+        "¿Qué herramientas de marketing están disponibles?",
+        "¿Cómo manejo las primeras llamadas?",
+        "¿Qué preguntas debo hacer en la primera reunión?"
+      ]
+    },
+    "cierre": {
+      "keywords": ["cierre", "venta", "objeción"],
+      "suggestions": [
+        "¿Cuáles son las mejores técnicas de cierre?",
+        "¿Cómo manejo las objeciones comunes?",
+        "¿Qué preguntas debo hacer para cerrar?",
+        "¿Cómo puedo crear urgencia sin ser agresivo?",
+        "¿Qué hacer si el cliente dice 'lo pienso'?"
+      ]
+    },
+    "seguimiento": {
+      "keywords": ["seguimiento", "follow", "post-venta"],
+      "suggestions": [
+        "¿Cuándo debo hacer seguimiento a un prospecto?",
+        "¿Qué información debo compartir en el seguimiento?",
+        "¿Cómo mantengo el interés del cliente?",
+        "¿Qué herramientas de seguimiento están disponibles?",
+        "¿Cómo manejo los clientes que no responden?"
+      ]
+    },
+    "general": {
+      "keywords": [],
+      "suggestions": [
+        "¿Puedes darme más detalles sobre eso?",
+        "¿Qué otros productos recomiendas?",
+        "¿Cómo puedo mejorar en esta área?",
+        "¿Tienes algún consejo específico?",
+        "¿Qué recursos adicionales están disponibles?"
+      ]
+    }
+  }
+} 
