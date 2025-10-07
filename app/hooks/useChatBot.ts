@@ -180,13 +180,13 @@ export const useChatBot = () => {
 
     } catch (error: any) {
       console.log("Error en sendMessage:", error);
- 
+
 
       let errorMessage = 'Lo siento, hubo un problema al procesar tu mensaje. Por favor, intenta de nuevo en unos momentos.';
 
       if (error.code === 'ECONNABORTED') {
         errorMessage = 'La solicitud tardó demasiado en responder. Por favor, intenta de nuevo.';
-        
+
       } else if (error.response?.status === 401) {
         errorMessage = 'Error de autenticación. Por favor, inicia sesión nuevamente.';
       } else if (error.response?.status === 500) {
@@ -209,6 +209,7 @@ export const useChatBot = () => {
         error: errorMessage
       }));
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user, checkConnection]);
 
   // Agregar mensaje de bienvenida
@@ -304,6 +305,7 @@ export const useChatBot = () => {
       generateLocalSuggestions(lastAssistantMessage);
       setState(prev => ({ ...prev, isLoadingSuggestions: false }));
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user?.Guid_Agente]);
 
   // Función para extraer sugerencias de la respuesta del bot
