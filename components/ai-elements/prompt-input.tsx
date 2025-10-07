@@ -106,7 +106,7 @@ export const usePromptInputController = () => {
 };
 
 // Optional variants (do NOT throw). Useful for dual-mode components.
-const optional_usePromptInputController = () => {
+const useOptionalPromptInputController = () => {
   return useContext(PromptInputContext);
 };
 
@@ -120,7 +120,7 @@ export const useProviderAttachments = () => {
   return ctx;
 };
 
-const optional_useProviderAttachments = () => {
+const useOptionalProviderAttachments = () => {
   return useContext(ProviderAttachmentsContext);
 };
 
@@ -233,7 +233,7 @@ const LocalAttachmentsContext = createContext<AttachmentsContext | null>(null);
 
 export const usePromptInputAttachments = () => {
   // Dual-mode: prefer provider if present, otherwise use local
-  const provider = optional_useProviderAttachments();
+  const provider = useOptionalProviderAttachments();
   const local = useContext(LocalAttachmentsContext);
   const context = provider ?? local;
   if (!context) {
@@ -451,7 +451,7 @@ export const PromptInput = ({
   ...props
 }: PromptInputProps) => {
   // Try to use a provider controller if present
-  const controller = optional_usePromptInputController();
+  const controller = useOptionalPromptInputController();
   const usingProvider = !!controller;
 
   // Refs
@@ -783,7 +783,7 @@ export const PromptInputTextarea = ({
   placeholder = "What would you like to know?",
   ...props
 }: PromptInputTextareaProps) => {
-  const controller = optional_usePromptInputController();
+  const controller = useOptionalPromptInputController();
   const attachments = usePromptInputAttachments();
 
   const handleKeyDown: KeyboardEventHandler<HTMLTextAreaElement> = (e) => {
