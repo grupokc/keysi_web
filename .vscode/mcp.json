@@ -1,8 +1,8 @@
 {
   "servers": {
-    "Sentry": {
-      "url": "https://mcp.sentry.dev/mcp/ensamble/kc-titan",
-      "type": "http"
+    "shadcn": {
+      "command": "npx",
+      "args": ["shadcn@latest", "mcp"]
     }
   }
 }

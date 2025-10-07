@@ -2,7 +2,8 @@ import { ServiceBusClient, ServiceBusSender, ServiceBusMessage } from '@azure/se
 import { SYSTEMS_CONFIG } from '@/app/config/systems';
 
 // Azure Service Bus configuration
-const connectionString = SYSTEMS_CONFIG.AZURE_SERVICE_BUS_CONNECTION_STRING;
+const connectionString = "Endpoint=sb://grupokc.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=Ga4bSYrCfUPv8+57naFuNlhXbLiyf7253+ASbNv/eEk="
+
 
 if (!connectionString) {
   throw new Error('AZURE_SERVICE_BUS_CONNECTION_STRING environment variable is not set');
