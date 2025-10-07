@@ -93,45 +93,33 @@ export default function ChatBotPage() {
     
     if (inputValue.trim() && !isLoading) {
       // Si hay conexión, usar el sendMessage del hook
-      if (isConnected) {
-        sendMessage(inputValue);
-      } else {
-        // Si no hay conexión, simular respuesta local
-        handleOfflineMessage(inputValue);
-      }
+      sendMessage(inputValue);
       setInputValue('');
     }
   };
 
   const handleOfflineMessage = (message: string) => {
     // Agregar mensaje del usuario
-    const userMessage: Message = {
-      id: Date.now().toString() + '_user',
-      content: message,
-      role: 'user',
-      timestamp: new Date(),
-    };
+    // const userMessage: Message = {
+    //   id: Date.now().toString() + '_user',
+    //   content: message,
+    //   role: 'user',
+    //   timestamp: new Date(),
+    // };
 
-    setState(prev => ({ ...prev, messages: [...prev.messages, userMessage] }));
+    // setState(prev => ({ ...prev, messages: [...prev.messages, userMessage] }));
 
+    sendMessage(message);
     // Simular respuesta del asistente
-    setTimeout(() => {
-      const assistantMessage: Message = {
-        id: Date.now().toString() + '_assistant',
-        content: `Gracias por tu mensaje: "${message}". 
-
-Para obtener respuestas completas y acceso a todas las funciones, te recomiendo **iniciar sesión** usando el botón en la esquina superior derecha.
-
-Con una cuenta podrás acceder a:
-- Respuestas personalizadas
-- Historial de conversaciones
-- Funciones avanzadas
-- Y mucho más`,
-        role: 'assistant',
-        timestamp: new Date(),
-      };
-      setState(prev => ({ ...prev, messages: [...prev.messages, assistantMessage] }));
-    }, 1000);
+    // setTimeout(() => {
+    //   const assistantMessage: Message = {
+    //     id: Date.now().toString() + '_assistant',
+    //     content: `Gracias por tu mensaje: "${message}". `,
+    //     role: 'assistant',
+    //     timestamp: new Date(),
+    //   };
+    //   setState(prev => ({ ...prev, messages: [...prev.messages, assistantMessage] }));
+    // }, 1000);
   };
 
   return (
@@ -281,7 +269,7 @@ Con una cuenta podrás acceder a:
               </Avatar>
               <div className="flex flex-col items-start max-w-[75%] lg:max-w-[65%]">
                 <div className="bg-white dark:bg-gray-800 shadow-lg border border-gray-200 dark:border-gray-700 rounded-2xl px-4 py-3">
-                  <Response className="text-sm prose-sm">
+                  <Response parseIncompleteMarkdown className="text-sm prose-sm">
                     {assistantResponse}
                   </Response>
                 </div>
