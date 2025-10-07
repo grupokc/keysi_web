@@ -275,6 +275,9 @@ export const useChatBot = () => {
     async (content: string) => {
       if (!content.trim()) return;
 
+      // Limpiar la respuesta anterior antes de procesar el nuevo mensaje
+      setAssistantResponse('');
+
       const userMessage: Message = {
         id: Date.now().toString(),
         content,
@@ -322,8 +325,8 @@ export const useChatBot = () => {
 
         const message = {
           guid: from,
-          Plataforma: 'Keysi web',
-          Nombre_Usuario: 'Anonimo',
+          Plataforma: user.Plataforma || 'Keysi web',
+          Nombre_Usuario: user.Nombre_Agente || 'Anonimo',
           conversationId: conversationId,
           rol: 'usuario',
           message: content,
@@ -395,8 +398,8 @@ export const useChatBot = () => {
         setTimeout(async () => {
           const message = {
             guid: from,
-            Plataforma: 'Keysi web',
-            Nombre_Usuario: 'Anonimo',
+            Plataforma: user.Plataforma || 'Keysi web',
+            Nombre_Usuario: user.Nombre_Agente || 'Anonimo',
             conversationId: conversationId,
             rol: 'asistente',
             message: assistantResponse,

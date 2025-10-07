@@ -84,7 +84,6 @@ export default function ChatBotPage() {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleSuggestionClick = (suggestion: string) => {
-
     sendMessage(suggestion);
   };
 
@@ -99,6 +98,7 @@ export default function ChatBotPage() {
   };
 
   const handleOfflineMessage = (message: string) => {
+    sendMessage(message);
     // Agregar mensaje del usuario
     // const userMessage: Message = {
     //   id: Date.now().toString() + '_user',
@@ -109,7 +109,6 @@ export default function ChatBotPage() {
 
     // setState(prev => ({ ...prev, messages: [...prev.messages, userMessage] }));
 
-    sendMessage(message);
     // Simular respuesta del asistente
     // setTimeout(() => {
     //   const assistantMessage: Message = {
