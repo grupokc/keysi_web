@@ -1,0 +1,88 @@
+{
+    "cfdiDto": {
+        "serie": "A33",
+        "folio": 447,
+        "fecha": "2023-03-08T10:30:50",
+        "exportacion": "01",
+        "formaPago": "01",
+        "granTotal": 1579.36,
+        "total": 1567.36,
+        "subTotal": 1321.02,
+        "descuento": 0.0,
+        "moneda": "MXN",
+        "lugarExpedicion": "45050",
+        "tipoCfdi": "FACTURA",
+        "metodoPago": "PUE",
+        "emisor": {
+            "rfc": "GKA950922SG4",
+            "regimenFiscal": "601",
+            "nombre": "GRUPO KC AGENTE DE SEGUROS"        },
+        "receptor": {
+            "rfc": "MODL960320JX0",
+            "nombre": "MARIA DE LOURDES MORENO DAVILA",
+            "usoCFDI": "S01",
+            "regimenFiscal": "605",
+            "domicilioFiscal": "06220",
+            "calle": "",
+            "noExterior": "",
+            "noInterior": "",
+            "colonia": "",
+            "municipio": "",
+            "estado": "",
+            "email": ""        },
+        "conceptos": [{
+                "cantidad": 1.0,
+                "claveUnidad": "E48",
+                "unidad": "Unidad de servicio",
+                "noIdentificacion": "01",
+                "descripcion": "Habitacion (1)",
+                "valorUnitario": 1321.02,
+                "importe": "1321.02",
+                "descuento": 0.0,
+                "claveProdServ": "90111500",
+                "objetoImp": "02",
+                "impuestos": {
+                    "traslados": [{
+                            "base": 1321.02,
+                            "impuesto": "002",
+                            "tipoFactor": "Tasa",
+                            "tasaoCuota": 0.16,
+                            "importe": 211.36                        }
+                    ]
+                }
+            }
+        ],
+        "impuestos": {
+            "totalImpuestosRetenidos": 0.0,
+            "totalImpuestosTrasladados": 211.36,
+            "retenciones": [],
+            "traslado": [{
+                    "base": 1321.02,
+                    "impuesto": "002",
+                    "tipoFactor": "Tasa",
+                    "tasaoCuota": 0.16,
+                    "importe": 211.36                }
+            ]
+        },
+        "impuestosLocales": {
+            "totalImpuestosRetenidos": 0.0,
+            "totalImpuestosTrasladados": 34.98,
+            "trasladoLocales": [{
+                    "impuesto": "ISH",
+                    "tasa": 0.03,
+                    "importe": 34.98                
+                    }
+            ]
+        },
+        "informacionFacto": {
+            "identificadorIntegracion": "CFDI_1",
+            "integracion": "CFDI_SERVICE",
+            "foliosFacto": true        }
+    },
+    "centroConsumo": null,
+    "claveProducto": "FHESMP",
+    "idioma": "ES",
+    "ambiente": "TEST",
+    "listAdicionalPDF": [],
+    "formato": "CFDI_GENERICO"
+}
