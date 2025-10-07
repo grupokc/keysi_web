@@ -11,8 +11,9 @@ const SYSTEMS_CONFIG = {
     favicon: '/img/logos/GrupoKCLogo300.png',
     sidebarLogo: '/img/logos/GrupoKCLogo300.png'
   },
-  CHAT_URL_AUTH: process.env.CHAT_URL_AUTH,
-  CHAT_BASE_URL: process.env.CHAT_BASE_URL,
+  AZURE_SERVICE_BUS_CONNECTION_STRING: process.env.AZURE_SERVICE_BUS_CONNECTION_STRING,
+  CHAT_URL_AUTH: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
+  CHAT_BASE_URL: "https://apipy.kcapis.net/chatbase",
 };
 
 module.exports = { SYSTEMS_CONFIG }; 

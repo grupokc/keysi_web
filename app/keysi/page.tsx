@@ -11,7 +11,8 @@ import {
   ScrollShadow,
   Chip,
 } from '@heroui/react';
-import { Sparkles, Send, Bot, ArrowUp } from 'lucide-react';
+import { Sparkles, Send, Bot, ArrowUp, LogIn } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import { useChatBot } from '@/app/hooks/useChatBot';
 import { getInitialSuggestions } from './suggestionsUtils';
 import { AIResponse } from './components/AIResponse';
@@ -26,6 +27,7 @@ interface Message {
 }
 
 export default function ChatBotPage() {
+  const router = useRouter();
   const {
     messages,
     isLoading,
@@ -68,42 +70,25 @@ export default function ChatBotPage() {
   useEffect(() => {
     scrollToBottom();
 
-    
-
-    
   }, [messages]);
 
 
 
-  // Verificar conexión y agregar mensaje de bienvenida al cargar
+  // Agregar mensaje de bienvenida al cargar
   useEffect(() => {
-    const isConnected = checkConnection();
-    
-
-    // Agregar mensaje de bienvenida basado en el estado de conexión actual
     if (messages.length === 0) {
-      if (isConnected) {
-        const welcomeMessage: Message = {
-          id: '1',
-          content: `¡Hola! Soy  **Keysi**. ¿En qué puedo ayudarte hoy? 😊`,
-          role: 'assistant',
-          timestamp: new Date(),
-        };
-        // Usar el hook para agregar el mensaje
-        setState((prev: any) => ({ ...prev, messages: [welcomeMessage] }));
-      } else {
-        const errorMessage: Message = {
-          id: '1',
-          content: 'No se pudo establecer la conexión. Por favor, asegúrate de estar autenticado en el sistema.',
-          role: 'assistant',
-          timestamp: new Date(),
-        };
-        setState((prev: any) => ({ ...prev, messages: [errorMessage] }));
-      }
+      const welcomeMessage: Message = {
+        id: '1',
+        content: "¡Hola! Soy **Keysi**, tu asistente de IA. ¿En qué puedo ayudarte hoy? 😊",
+        role: 'assistant',
+        timestamp: new Date(),
+      };
+      setState((prev: any) => ({ ...prev, messages: [welcomeMessage] }));
     }
-  }, []); // Solo se ejecuta una vez al montar el componente
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleSuggestionClick = (suggestion: string) => {
+
     sendMessage(suggestion);
   };
 
@@ -111,14 +96,62 @@ export default function ChatBotPage() {
     e.preventDefault();
     
     if (inputValue.trim() && !isLoading) {
-      sendMessage(inputValue);
+      // Si hay conexión, usar el sendMessage del hook
+      if (isConnected) {
+        sendMessage(inputValue);
+      } else {
+        // Si no hay conexión, simular respuesta local
+        handleOfflineMessage(inputValue);
+      }
       setInputValue('');
     }
   };
 
+  const handleOfflineMessage = (message: string) => {
+    // Agregar mensaje del usuario
+    const userMessage: Message = {
+      id: Date.now().toString() + '_user',
+      content: message,
+      role: 'user',
+      timestamp: new Date(),
+    };
+
+    setState(prev => ({ ...prev, messages: [...prev.messages, userMessage] }));
+
+    // Simular respuesta del asistente
+    setTimeout(() => {
+      const assistantMessage: Message = {
+        id: Date.now().toString() + '_assistant',
+        content: `Gracias por tu mensaje: "${message}". 
+
+Para obtener respuestas completas y acceso a todas las funciones, te recomiendo **iniciar sesión** usando el botón en la esquina superior derecha.
+
+Con una cuenta podrás acceder a:
+- Respuestas personalizadas
+- Historial de conversaciones
+- Funciones avanzadas
+- Y mucho más`,
+        role: 'assistant',
+        timestamp: new Date(),
+      };
+      setState(prev => ({ ...prev, messages: [...prev.messages, assistantMessage] }));
+    }, 1000);
+  };
+
   return (
     <div className="h-full bg-white dark:bg-gray-900 flex flex-col">
+      {/* Header con botón de login */}
+      <div className="flex-shrink-0 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 px-4 py-3">
+        <div className="max-w-4xl mx-auto flex justify-between items-center">
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
+              <Sparkles className="w-6 h-6 text-blue-500" />
+              <h1 className="text-xl font-semibold text-gray-900 dark:text-white">Keysi</h1>
+            </div>
+          </div>
 
+        </div>
+      </div>
 
       {/* Área de mensajes - Scroll interno */}
       <div className="flex-1 bg-white overflow-y-auto">
@@ -182,7 +215,7 @@ export default function ChatBotPage() {
         </div>
 
         {/* Sugerencias en el área de mensajes - Solo al inicio */}
-        {messages.length === 1 && isConnected && (() => {
+        {messages.length === 1 && (() => {
           const suggestions = getCurrentSuggestions();
           if (suggestions.length > 0) {
             return (
@@ -211,7 +244,7 @@ export default function ChatBotPage() {
       </div>
 
       {/* Sugerencias fijas arriba del input - Solo cuando hay conversación */}
-      {messages.length > 1 && isConnected && (() => {
+      {messages.length > 1 && (() => {
         const suggestions = getCurrentSuggestions();
         const hasSuggestions = suggestions.length > 0 || isLoadingSuggestions;
         
@@ -274,10 +307,10 @@ export default function ChatBotPage() {
         <div className="max-w-4xl mx-auto">
           <form onSubmit={handleSubmit} className="flex gap-3">
             <Input
-              placeholder={isConnected ? "Escribe tu mensaje aquí..." : "No conectado - Inicia sesión para continuar"}
+              placeholder="Escribe tu mensaje aquí..."
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
-              disabled={isLoading || !isConnected}
+              disabled={isLoading}
               className="flex-1"
               size="lg"
               classNames={{
@@ -290,7 +323,7 @@ export default function ChatBotPage() {
               isIconOnly
               size="lg"
               color="primary"
-              disabled={isLoading || !inputValue.trim() || !isConnected}
+              disabled={!inputValue.trim()}
               className="bg-blue-500 hover:bg-blue-600"
             >
               <Send size={18} />

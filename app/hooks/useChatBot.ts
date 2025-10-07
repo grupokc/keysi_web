@@ -72,11 +72,8 @@ export const useChatBot = () => {
 
     try {
       // Verificar conexión antes de enviar
-      if (!checkConnection()) {
-        throw new Error('No se pudo obtener el GUID del agente. Por favor, inicia sesión nuevamente.');
-      }
 
-      const from = user.Guid_Agente;
+      const from = '9513ce03-0cc6-410e-9c86-0c56c3677027' //user.Guid_Agente;
 
       if (!from) {
         throw new Error('No se pudo obtener el GUID del agente. Por favor, inicia sesión nuevamente.');
@@ -101,8 +98,8 @@ export const useChatBot = () => {
 
       const message = {
         guid: from,
-        Plataforma: "Titán",
-        Nombre_Usuario: user.Nombre_Persona,
+        Plataforma: "Keysi web",
+        Nombre_Usuario: 'Anonimo',
         conversationId: conversationId,
         rol: "usuario",
         message: content,
@@ -169,8 +166,8 @@ export const useChatBot = () => {
 
         const message = {
           guid: from,
-          Plataforma: "Titán",
-          Nombre_Usuario: user.Nombre_Persona,
+          Plataforma: "Keysi web",
+          Nombre_Usuario: 'Anonimo',
           conversationId: conversationId,
           rol: "asistente",
           message: assistantResponse,
@@ -182,6 +179,7 @@ export const useChatBot = () => {
       }, 1000);
 
     } catch (error: any) {
+      console.log("Error en sendMessage:", error);
  
 
       let errorMessage = 'Lo siento, hubo un problema al procesar tu mensaje. Por favor, intenta de nuevo en unos momentos.';

@@ -118,6 +118,10 @@ export default function RootLayout({
                   <ResetPasswordPage />
                 </div>
               </main>
+            ) : (pathname === '/' || pathname.startsWith('/keysi')) ? (
+              <main className="h-screen w-full">
+                {children}
+              </main>
             ) : (
               <div className="flex h-screen">
                 {!isMobile ? (
