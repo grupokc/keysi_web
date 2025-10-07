@@ -12,8 +12,6 @@ import { ComunicadosProvider } from '@/app/context/ComunicadosContext';
 import { executeForCRUD } from './services/frontBack';
 import Sidebar from './components/Sidebar';
 import TopNav from '@/app/components/top-nav';
-import FrmLogIn from '@/app/auth/login-form';
-import ResetPasswordPage from '@/app/auth/resetPassword/page';
 import Head from 'next/head';
 import { useSystemType } from './hooks/useSystemType';
 import { SYSTEMS_CONFIG } from './config/systems.js';
@@ -103,60 +101,11 @@ export default function RootLayout({
         />
 
         <body className={`${inter.className} antialiased`}>
-          <UserKCContextProvider>
-            <ComunicadosProvider>
-              <Toaster richColors position="top-center" />
-            {pathname === '/auth' ? (
-              <main className="flex h-screen items-center justify-center">
-                <div className="mx-auto flex w-full max-w-[400px] flex-col space-y-2.5 p-4">
-                  <FrmLogIn />
-                </div>
-              </main>
-            ) : pathname.startsWith('/auth/resetPassword') ? (
-              <main className="flex h-screen items-center justify-center">
-                <div className="relative mx-auto flex w-full flex-col space-y-2.5 p-6 md:-mt-32">
-                  <ResetPasswordPage />
-                </div>
-              </main>
-            ) : (pathname === '/' || pathname.startsWith('/keysi')) ? (
-              <main className="h-screen w-full">
-                {children}
-              </main>
-            ) : (
-              <div className="flex h-screen">
-                {!isMobile ? (
-                  <aside className="fixed left-0 top-0 z-50 flex h-screen w-64 flex-col">
-                    <Sidebar
-                      setSelectedView={(view) => router.push(view)}
-                      setIsMobileMenuOpen={setIsMobileMenuOpen}
-                      isTicketsPage={isTicketsPage}
-                      views={views}
-                    />
-                  </aside>
-                ) : (
-                  <Sidebar
-                    setSelectedView={(view) => router.push(view)}
-                    setIsMobileMenuOpen={setIsMobileMenuOpen}
-                    isTicketsPage={isTicketsPage}
-                    views={views}
-                  />
-                )}
+          
+          <main className="mt-16 min-h-0 flex-grow overflow-auto p-6 dark:bg-[#0F0F12]">
+              {children}
+          </main>
 
-                <div className="ml-0 flex w-full flex-grow flex-col lg:ml-64">
-                  <header className="fixed left-0 top-0 z-10 h-16 w-full border-b border-gray-200 bg-white dark:border-[#1F1F23] dark:bg-[#0F0F12] lg:left-64 lg:w-[calc(100%-16rem)]">
-                    <TopNav />
-                  </header>
-                  <main className="mt-16 min-h-0 flex-grow overflow-auto p-6 dark:bg-[#0F0F12]">
-                    {children}
-                  </main>
-                </div>
-              </div>
-            )}
-            </ComunicadosProvider>
-          </UserKCContextProvider>
-
-          <GoogleAnalytics gaId="G-70LDYERL75" />
-          <GoogleTagManager gtmId="GTM-M9MJ3BSQ" />
         </body>
       </html>
   );
