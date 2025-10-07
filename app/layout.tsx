@@ -27,7 +27,7 @@ export default function RootLayout({
       document.head.appendChild(link);
 
       // Actualizar título
-      document.title = currentSystem.name;
+      document.title = "Keysi Web" ;
     }
   }, [systemType, currentSystem]);
 

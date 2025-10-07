@@ -376,7 +376,7 @@ export default function ChatBotPage() {
             </div>
               <p className="text-xs text-blue-600 dark:text-amber-400 mt-2 flex items-center gap-1">
                 <span className="w-1.5 h-1.5 rounded-full bg-amblueer-500 animate-pulse"></span>
-                Grupo KC Agente de Seguros SAPI de C.V.  V001-2025
+                Grupo KC Agente de Seguros SAPI de C.V.  V002-2025
               </p>
           </form>
         </div>
