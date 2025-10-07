@@ -61,6 +61,7 @@ const nextConfig = {
 
 module.exports = nextConfig;
 
+
 // Injected content via Sentry wizard below
 
 const { withSentryConfig } = require('@sentry/nextjs');
@@ -70,7 +71,7 @@ module.exports = withSentryConfig(module.exports, {
   // https://www.npmjs.com/package/@sentry/webpack-plugin#options
 
   org: 'ensamble',
-  project: 'kc-titan',
+  project: 'keysi-web',
 
   // Only print logs for uploading source maps in CI
   silent: !process.env.CI,
@@ -94,5 +95,5 @@ module.exports = withSentryConfig(module.exports, {
   // See the following for more information:
   // https://docs.sentry.io/product/crons/
   // https://vercel.com/docs/cron-jobs
-  automaticVercelMonitors: false,
+  automaticVercelMonitors: true,
 });
