@@ -248,7 +248,7 @@ export const useChatBot = () => {
   };
 
   const user = {
-    Guid_Agente: generateGuid,
+    Guid_Agente: generateGuid(),
     Nombre_Agente: 'Anonimo',
     Plataforma: 'Keysi web',
   }
